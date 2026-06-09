@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackflow: Purification Protocol</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="crt-overlay"></div>
+
+<div id="game-container">
+    <div id="hud">
+        <div>SYS: BLACKFLOW // PURIFICATION PROTOCOL</div>
+        <div>TRUTH: <span id="truth-val">0</span>%</div>
+        <div>CORRUPTION: <span id="corrupt-val">0</span>%</div>
+    </div>
+
+    <div id="viewport">
+        <div id="scene-bg"></div>
+        <div id="player" style="display: none;"></div>
+
+        <div id="inventory-bar">
+            <strong>EQUIPMENT</strong>
+            <div id="item-kit" class="inv-item">⚗️ Water Kit</div>
+            <div id="item-tool" class="inv-item">🔧 Repair Tool</div>
+            <div id="item-decoder" class="inv-item">📟 Decoder</div>
+            <br>
+            <strong>BADGES</strong>
+            <div id="badge-listener" class="inv-item">📡 Listener</div>
+            <div id="badge-repairer" class="inv-item">🛠️ Repairer</div>
+        </div>
+    </div>
+
+    <div id="terminal">
+        <div id="text-log">SYSTEM BOOT... Select Start Protocol to begin tracing corrupted water system signals.</div>
+        <div id="choices-box">
+            <button id="start-btn">START PROTOCOL</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>

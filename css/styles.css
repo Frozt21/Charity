@@ -1,0 +1,164 @@
+:root {
+    --crt-green: #33ff33;
+    --corrupt-red: #ff3333;
+    --ui-blue: #4af3ff;
+    --bg-dark: #05080c;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--ui-blue);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* CRT Scanline Effect Overlay */
+.crt-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#game-container {
+    width: 1000px;
+    height: 650px;
+    border: 3px solid var(--ui-blue);
+    background-color: #0c1015;
+    box-shadow: 0 0 20px rgba(74, 243, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
+
+.corrupted {
+    color: var(--corrupt-red) !important;
+    border-color: var(--corrupt-red) !important;
+    animation: glitch 0.3s infinite;
+}
+
+/* Top HUD */
+#hud {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 2px solid var(--ui-blue);
+    background: rgba(12, 16, 21, 0.8);
+    font-weight: bold;
+}
+
+/* Main Viewport */
+#viewport {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* Scene Background using Sprite Sheet Map */
+#scene-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url('../image_36d87e.jpg');
+    background-repeat: no-repeat;
+    transition: background-position 0.5s ease;
+    background-size: 300% auto; 
+    background-position: 0% 4%; 
+}
+
+/* Player Sprite styling */
+#player {
+    position: absolute;
+    bottom: 40px;
+    left: 100px;
+    width: 70px;
+    height: 110px;
+    background-image: url('../image_36d87e.jpg');
+    background-repeat: no-repeat;
+    background-size: 1500px auto;
+    background-position: -45px -740px; 
+    transition: left 0.2s linear;
+}
+
+/* Control Panel / Dialogue Box */
+#terminal {
+    height: 180px;
+    border-top: 2px solid var(--ui-blue);
+    background: rgba(5, 8, 12, 0.95);
+    display: flex;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#text-log {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#choices-box {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    background: transparent;
+    color: var(--ui-blue);
+    border: 1px solid var(--ui-blue);
+    padding: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: rgba(74, 243, 255, 0.2);
+    box-shadow: 0 0 8px var(--ui-blue);
+}
+
+/* Inventory & Badges Sidebar Overlay */
+#inventory-bar {
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    background: rgba(5, 8, 12, 0.85);
+    border: 1px solid var(--ui-blue);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.inv-item {
+    color: #fff;
+    opacity: 0.5;
+}
+.inv-item.active {
+    opacity: 1;
+    color: var(--crt-green);
+}
